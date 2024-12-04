@@ -55,6 +55,28 @@ public class FileOperations {
         }
     }
 
+    public static void searchFile(String directory, String filename) {
+        File dir = new File(directory);
+        if (dir.isDirectory()) {
+            File[] files = dir.listFiles();
+            boolean found = false;
+            if (files != null) {
+                for (File file : files) {
+                    if (file.getName().equalsIgnoreCase(filename)) {
+                        System.out.println("File found: " + file.getAbsolutePath());
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found) {
+                System.out.println("File '" + filename + "' not found in directory '" + directory + "'.");
+            }
+        } else {
+            System.out.println("Invalid directory path.");
+        }
+    }
+
     public static void viewFileMetadata(String filename) {
         File file = new File(filename);
         if (file.exists()) {
@@ -71,14 +93,14 @@ public class FileOperations {
 
     public static void main(String[] args) {
         String filename = "example.txt";
+        String directory = ".";
+
         createFile(filename);
-
         writeFile(filename, "Hello, this is a test file!");
-
         readFile(filename);
-
+        searchFile(directory, filename);
         viewFileMetadata(filename);
-
         deleteFile(filename);
+        searchFile(directory,filename);
     }
 }
