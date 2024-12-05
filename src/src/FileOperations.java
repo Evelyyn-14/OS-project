@@ -90,17 +90,4 @@ public class FileOperations {
             System.out.println("File '" + filename + "' does not exist.");
         }
     }
-
-    public static void main(String[] args) {
-        String filename = "example.txt";
-        String directory = ".";
-
-        createFile(filename);
-        writeFile(filename, "Hello, this is a test file!");
-        readFile(filename);
-        searchFile(directory, filename);
-        viewFileMetadata(filename);
-        deleteFile(filename);
-        searchFile(directory,filename);
-    }
 }
